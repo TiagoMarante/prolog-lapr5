@@ -11,6 +11,8 @@
 :- use_module(library(settings)).
 :- use_module(library(http/http_error)).
 :- use_module(library(http/http_open)).
+:- use_module(library(http/http_ssl_plugin)).
+
 :- set_setting(http:cors, [*]).
 
 
