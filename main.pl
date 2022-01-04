@@ -1,10 +1,10 @@
 :- use_module(library(http/thread_httpd)).
 :- use_module(library(http/http_dispatch)).
 
-:- http_handler(/, root_handler, []).
+:- http_handler(/, test123, []).
 :- http_handler('/db', db, []).
 
-root_handler(_):-
+test123(_):-
         format('Content-Type: text/html~n~n', []),
         findall(Fact, some_fact(Fact), Facts),
         atomic_list_concat(Facts, ', ', Atom),
