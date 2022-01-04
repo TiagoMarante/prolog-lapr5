@@ -18,6 +18,43 @@
 :- http_handler(/, root_handler, []).
 :- http_handler('/db', db, []).
 
+% Relação entre pedidos HTTP e predicados que os processam
+:- http_handler('/prolog/processa_json', p_json, []).
+:- json_object student(name:string, number:integer).
+
+% Relação entre pedidos HTTP e predicados que os processam
+:- http_handler('/prolog/atualizausers', update_users_json, []).
+
+% Relação entre pedidos HTTP e predicados que os processam
+:- http_handler('/prolog/atualizaconnections', update_connections_json, []).
+
+% Tamanho da Rede JSON
+:- http_handler('/prolog/tamanhorede', tamanho_rede_json, []).
+:- json_object rede(name:string, level:integer).
+
+:- http_handler('/prolog/listaadjacencias', listaadjacencias_json, []).
+:- json_object listaadjacencias_json_json(name:string, level:integer).
+
+:- http_handler('/prolog/sugereusers', sugere_conexoes_json, []).
+:- json_object rede(name:string, level:integer).
+
+% Caminhjo mais forte JSON
+:- http_handler('/prolog/caminhoforte', caminho_mais_forte, []).
+:- json_object rede(name:string, level:integer).
+
+
+% User com tags em comum JSON
+:- http_handler('/prolog/tagscomum', tagscomum_json, []).
+:- json_object tagscomum(x:integer).
+:- json_object tasgcomum_respostagerador(
+users_por_combinacao:list(users_por_combinacao_json/2)
+).
+
+:- json_object users_por_combinacao_json(
+        combinacao:list(string),
+        users:list(string)
+).
+
 
 % Read from another file database
 :- include(bc_sprintB_rede_social).
