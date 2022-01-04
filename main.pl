@@ -16,6 +16,12 @@
 :- set_setting(http:cors, [*]).
 
 
+% Read from another file database
+:- include(bc_sprintB_rede_social).
+:- include(users_X_commun_tags).
+:- include(sgrai_prolog).
+
+
 % Rotas
 :- http_handler(/, root_handler, []).
 :- http_handler('/db', db, []).
@@ -57,11 +63,6 @@ users_por_combinacao:list(users_por_combinacao_json/2)
         users:list(string)
 ).
 
-
-% Read from another file database
-:- include(bc_sprintB_rede_social).
-:- include(users_X_commun_tags).
-:- include(sgrai_prolog).
 
 
 p_json(Request) :- 
