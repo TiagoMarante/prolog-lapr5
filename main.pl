@@ -14,10 +14,15 @@
 :- set_setting(http:cors, [*]).
 
 
-
-
+% Rotas
 :- http_handler(/, root_handler, []).
 :- http_handler('/db', db, []).
+
+
+% Read from another file database
+:- include(bc_sprintB_rede_social).
+:- include(users_X_commun_tags).
+:- include(sgrai_prolog).
 
 root_handler(_):-
         format('Content-Type: text/html~n~n', []),
